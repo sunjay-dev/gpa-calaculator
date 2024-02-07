@@ -1,0 +1,30 @@
+
+.nav-pills .nav-link.active {
+  border-bottom: 2px solid #ffffff;
+}
+
+
+.stars-container {
+  display: flex;
+  align-items: center;
+  background-color: #f8f9fa; 
+  padding: 10px; 
+  border-radius: 8px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+.stars {
+  font-size: 30px;
+  cursor: pointer;
+  color: goldenrod; 
+  transition: transform 0.2s ease-in-out; 
+   display: inline-block;
+}
+
+.stars:hover {
+  transform: scale(1.2); 
+}
+
+.rating-text {
+  margin-right: 10px; 
+}
