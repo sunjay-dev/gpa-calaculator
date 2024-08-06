@@ -1,30 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
-.nav-pills .nav-link.active {
-  border-bottom: 2px solid #ffffff;
+.input_text {
+  font-weight: bold;
+  text-align: center;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: emoji;
+  background: transparent;
+  border: transparent;
+  height: 33px;
+  box-shadow: 0 0 0 1px transparent, 0 2px 4px 0 rgb(0 0 0 / 7%), 0 1px 1.5px 0 rgb(0 0 0 / 5%);
 }
 
+input_text:focus {
+  border: 2px solid #000;
+  border-radius: 4px;
+}
 
-.stars-container {
+.b1 {
+  text-align: center;
+}
+
+#p1 {
+  text-align: center;
+  color: #617bff;
+}
+
+@media only screen and (max-device-width: 480px) {
+  .input_text {
+    font-weight: normal;
+  font-size: 14px;
+   width: 120%;
+  
+  }
+  .form-group > .selectGrade{
+    width: 50%;
+  }
+  .form-group > .form-select{
+    font-size: 0.9rem;
+  }
+  .fs-4{
+    padding-left: 0px;
+  }
+}
+
+.readyClass {
+  background: hsla(0, 0%, 100%, 0.6);
+  padding: 28px 24px;
+  font-size: 11px;
+  text-align: center;
+}
+
+.readyClass__copy {
+  margin: 0;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: hsla(0, 0%, 100%, 0.6);
+  padding: 28px 24px;
+  font-size: 11px;
+  text-align: center; /* Optional: centers the text */
+  z-index: 10000;
+}
+
+.footer__copy {
+  margin: 0; /* Ensure no extra margin around the copy text */
+}
+.form-group {
   display: flex;
   align-items: center;
-  background-color: #f8f9fa; 
-  padding: 10px; 
-  border-radius: 8px; 
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  /* width: 50%; */
+}
+.form-group > * {
+  margin-right: 4px;
 }
 
-.stars {
-  font-size: 30px;
-  cursor: pointer;
-  color: goldenrod; 
-  transition: transform 0.2s ease-in-out; 
-   display: inline-block;
-}
-
-.stars:hover {
-  transform: scale(1.2); 
-}
-
-.rating-text {
-  margin-right: 10px; 
+.fs-4{
+  padding-left: 20px;
+font-family: Poppins;
 }

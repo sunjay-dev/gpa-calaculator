@@ -1,61 +1,124 @@
-function sendWhatsAppMessage(rating) {
-  // Replace 'YOURPHONE_NUMBER' with your actual phone number, including the country code
-  var phoneNumber = '+923099030247';
+const br = document.createElement('br');
+const p1 = document.getElementById('p1');
+function create_select(number) {
 
-  // Adjust the pre-written message as needed
-  var message = "I tried the GPA Calculator and, I would give it " + rating + "/5 stars!";
+  const inputText = document.createElement("input");
+  inputText.className = "input_text";
+  inputText.id=`inputId${number}`
+  inputText.value = `Subject${number}`;
 
-  // Create the WhatsApp link
-  var whatsappLink = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+  const Usergradeselect = document.createElement("select");
+  Usergradeselect.className = "form-select selectGrade";
+  Usergradeselect.required = true;
+  Usergradeselect.id = `mygrade${number}`
+  let gradeArr = [ "A", "B+", "B", "C+", "C", "C-", "F"];
+  let ValueArr = [ "3.5", "3", "2.5", "2", "1.5", "1", "0"];
 
-  // Open the link in a new tab or window
-  window.open(whatsappLink, '_blank');
-}
+  const no_option = document.createElement("option");
+  no_option.innerHTML = "A+";
+  no_option.value = "4";
+  no_option.selected = true;
+  Usergradeselect.appendChild(no_option);
 
-
-function calculate() {
-  let gradeOOPs = parseFloat(document.getElementById('gradeOOPs').value);
-  let gradeLAAG = parseFloat(document.getElementById('gradeLAAG').value);
-  let gradeOOPSPRACTICAL = parseFloat(document.getElementById('gradeOOPSPRACTICAL').value);
-  let gradeETHICS = parseFloat(document.getElementById('gradeETHICS').value);
-  let gradePS = parseFloat(document.getElementById('gradePS').value);
-  let gradeSWE = parseFloat(document.getElementById('gradeSWE').value);
-  let gradePP = parseFloat(document.getElementById('gradePP').value);
-
-  let OOPs = 3;
-  let LAAG = 3;
-  let OOPSPRACTICAL = 1;
-  let ETHICS = 2;
-  let PS = 2;
-  let SWE = 3;
-  let PP = 3;
-
-  let sum = (gradeOOPs * OOPs) + (gradeLAAG * LAAG) + (gradeOOPSPRACTICAL * OOPSPRACTICAL) + (gradeETHICS * ETHICS) + (gradePS * PS) + (gradeSWE * SWE) + (gradePP * PP);
-
-  let total = OOPs + LAAG + OOPSPRACTICAL + ETHICS + PS + SWE + PP;
-
-  document.getElementById('result').innerHTML = "Your GPA is: " + (sum / total).toFixed(2);
-}
-
-
-
-function validateForm() {
-  // Get the selected values from the grade dropdowns
-  let gradeOOPs = document.getElementById('gradeOOPs').value;
-  let gradeLAAG = document.getElementById('gradeLAAG').value;
-  let gradeOOPSPRACTICAL = document.getElementById('gradeOOPSPRACTICAL').value;
-  let gradeETHICS = document.getElementById('gradeETHICS').value;
-  let gradePS = document.getElementById('gradePS').value;
-  let gradeSWE = document.getElementById('gradeSWE').value;
-  let gradePP = document.getElementById('gradePP').value;
-
-  // Check if any of the fields are empty
-  if (gradeOOPs === "" || gradeLAAG === "" || gradeOOPSPRACTICAL === "" ||
-      gradeETHICS === "" || gradePS === "" || gradeSWE === "" || gradePP === "") {
-    alert("Please select a grade for each subject.");
-    return false; // Prevent the form from submitting
+  for (let i = 0; i < gradeArr.length; i++) {
+    const option = document.createElement("option");
+    option.innerHTML = gradeArr[i];
+    option.value = ValueArr[i];
+    Usergradeselect.appendChild(option)
   }
 
-  else
-  calculate();
+
+  const Subject_CH_select = document.createElement("select");
+  Subject_CH_select.className = "form-select";
+  Subject_CH_select.id = `subjectCH${number}`;
+
+  const CH_options = document.createElement("option");
+  CH_options.innerHTML = "Credit Hours";
+  CH_options.value = "";
+  CH_options.disabled = true;
+  CH_options.selected = true;
+  CH_options.required = true;
+  Subject_CH_select.appendChild(CH_options);
+
+
+  let CH = [3, 2, 1];
+  for (let i = 0; i < CH.length; i++) {
+    const option = document.createElement("option");
+    option.innerHTML = CH[i];
+    option.value = CH[i];
+    Subject_CH_select.appendChild(option)
+  }
+
+
+
+  const div = document.createElement("div");
+  div.className = "mb-3 form-group";
+
+  document.querySelector('form').appendChild(div);
+  div.appendChild(inputText);
+  div.appendChild(Usergradeselect);
+  div.appendChild(Subject_CH_select);
+
 }
+ // Starting from here 
+function create_input() {
+
+  const optionSelected = document.getElementById("select_subject").value;
+  if(optionSelected==="") return;
+  
+  const form = document.querySelector('form');
+  while (form.firstChild) {
+    form.removeChild(form.firstChild);
+  }
+
+  for (let i = 0; i < optionSelected; i++) {
+    create_select(i + 1);
+  }
+
+  const div = document.createElement("div");
+  div.className = "d-grid gap-2 col-6 mx-auto mt-3 b1";
+
+  const Calculate_button = document.createElement("button");
+  Calculate_button.id = "Calculate_Button";
+  Calculate_button.className = "btn btn-primary";
+  Calculate_button.textContent = "Calculate";
+  Calculate_button.type = "button";
+
+  div.appendChild(Calculate_button)
+  form.appendChild(div)
+  form.appendChild(br)
+
+
+  document.querySelector('.footer').className = "readyClass";
+  document.querySelector('.footer__copy').className = "readyClass__copy";
+
+  
+  document.querySelector('#Calculate_Button').addEventListener('click', function(e) {
+
+    let Totalsum=0;
+    let chSum=0;
+    
+    for (let i = 1; i <= optionSelected; i++) {
+      
+    let gradeValue= document.getElementById(`mygrade${i}`).value;
+    let chValue = document.getElementById(`subjectCH${i}`).value;
+      
+      if(chValue){
+      Totalsum+=(gradeValue*chValue);
+      chSum+= +chValue;
+      }
+      else{
+        let subjectValue = document.getElementById(`inputId${i}`).value;
+
+        if(subjectValue)
+        p1.innerHTML = `Oops! ${subjectValue} Credits Hours are not Selected.<br>Your GPA : NaN`;
+        else
+          p1.innerHTML = `Oops! Subject${i} Credits Hours are not Selected.<br>Your GPA : NaN`;
+        return;
+      }
+    } 
+let finalGPA = (Totalsum/chSum)
+    p1.innerHTML = "Your GPA : "+finalGPA.toFixed(2);
+  })
+}
+
