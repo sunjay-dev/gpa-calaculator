@@ -281,7 +281,7 @@ function CloseCard() {
 
 
 function URLgenerator(){
-  let newURL= window.location.hostname +  window.location.origin;
+  let newURL= window.location.origin +  window.location.pathname;
   let n = document.getElementById('select_subject').value;
   newURL+= `?n=${n}&subjects=`;
 
