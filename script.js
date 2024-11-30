@@ -1,7 +1,7 @@
 const br = document.createElement('br');
 const MyCard = document.getElementById('results');
 const card_body = document.querySelector('.card-body');
-
+const p = document.querySelector('#p');
 function create_select(number, subject_name, credits_hour) {
 
   const inputText = document.createElement("input"); //Subject1 created
