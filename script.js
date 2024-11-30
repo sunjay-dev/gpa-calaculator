@@ -72,7 +72,6 @@ function create_input() {
 
   let start_of_loop = 0;
   if (form.childElementCount > 0) { //remove old elements
-    alert("inside")
     form.removeChild(form.lastChild);
     form.removeChild(form.lastChild);
 
@@ -260,15 +259,13 @@ function showShareCard() {
   Inputdiv.appendChild(btnCopy);
 
   btnCopy.addEventListener('click', function () {
-  // Select the text field
   
   inputURL.select();
   inputURL.setSelectionRange(0, 99999); // For mobile devices
 
   // Copy the text inside the text field
   document.execCommand('copy');
-
-  // Optionally, you can display an alert or some feedback
+    
   alert('Copied: ' + inputURL.value);
 });
 
@@ -284,7 +281,7 @@ function CloseCard() {
 
 
 function URLgenerator(){
-  let newURL= window.location.href;
+  let newURL= window.location.hostname +  window.location.origin;
   let n = document.getElementById('select_subject').value;
   newURL+= `?n=${n}&subjects=`;
 
