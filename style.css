@@ -35,6 +35,11 @@ input_text:focus {
   text-align: center;
 }
 
+#p1 {
+  text-align: center;
+  color: #617bff;
+}
+
 .mr-pos-10{
 margin-right: 10px;
 margin-left: 5px;
