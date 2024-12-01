@@ -2,6 +2,7 @@ const br = document.createElement('br');
 const MyCard = document.getElementById('results');
 const card_body = document.querySelector('.card-body');
 const p = document.querySelector('#p');
+
 function create_select(number, subject_name, credits_hour) {
 
   const inputText = document.createElement("input"); //Subject1 created
@@ -105,12 +106,17 @@ function create_input() {
     document.querySelector('.footer__copy').className = "readyClass__copy";
   }
 
-  document.querySelector('#Calculate_Button').addEventListener('click', function (e) {
+  document.querySelector('#Calculate_Button').addEventListener('click', calculatefn)
+}
+
+function calculatefn(){
+
+  const form = document.querySelector("form");
 
     let Totalsum = 0;
     let chSum = 0;
 
-    for (let i = 1; i <= optionSelected; i++) {
+    for (let i = 1; i <= form.childElementCount-2; i++) {
 
       let gradeValue = document.getElementById(`mygrade${i}`).value;
       let chValue = document.getElementById(`subjectCH${i}`).value;
@@ -130,10 +136,8 @@ function create_input() {
       }
     }
     let finalGPA = (Totalsum / chSum)
-    p1.innerHTML = "Your GPA : " + finalGPA.toFixed(2);
-  })
+    showGpaCard(finalGPA.toFixed(2), Totalsum, chSum)
 }
-
 
 function create_input_for_params(number_of_subjects, subject_names, credits_hours) {
 
@@ -144,10 +148,7 @@ function create_input_for_params(number_of_subjects, subject_names, credits_hour
 
   for (let start_of_loop = 0; start_of_loop < optionSelected; start_of_loop++) {
     create_select(start_of_loop + 1, subject_names[start_of_loop], credits_hours[start_of_loop]);
-    // console.log(start_of_loop + 1, subject_names[start_of_loop], credits_hours[start_of_loop]);
-  }
-
-
+      }
 
   const div = document.createElement("div");
   div.className = "d-grid gap-2 col-6 mx-auto mt-3 b1";
@@ -167,34 +168,9 @@ function create_input_for_params(number_of_subjects, subject_names, credits_hour
     document.querySelector('.footer__copy').className = "readyClass__copy";
   }
 
-  document.querySelector('#Calculate_Button').addEventListener('click', function (e) {
-
-    let Totalsum = 0;
-    let chSum = 0;
-
-    for (let i = 1; i <= optionSelected; i++) {
-
-      let gradeValue = document.getElementById(`mygrade${i}`).value;
-      let chValue = document.getElementById(`subjectCH${i}`).value;
-
-      if (chValue) {
-        Totalsum += (gradeValue * chValue);
-        chSum += +chValue;
-      }
-      else {
-        let subjectValue = document.getElementById(`inputId${i}`).value;
-
-        if (subjectValue)
-          p1.innerHTML = `Oops! ${subjectValue} Credits Hours are not Selected.<br>Your GPA : NaN`;
-        else
-          p1.innerHTML = `Oops! Subject${i} Credits Hours are not Selected.<br>Your GPA : NaN`;
-        return;
-      }
-    }
-    let finalGPA = (Totalsum / chSum);
-    showGpaCard(finalGPA.toFixed(2), Totalsum, chSum);
-  })
+  document.querySelector('#Calculate_Button').addEventListener('click', calculatefn)
 }
+
 function URLValues() {
   const urlParams = new URLSearchParams(window.location.search);
 
@@ -210,11 +186,6 @@ function URLValues() {
 }
 
 function showGpaCard(gpa, Totalsum, chSum) {
-
-  let h5 = document.createElement("h5")
-  h5.className = "card-title";
-  h5.innerHTML = "Results";
-  card_body.appendChild(h5);
 
   let p1 = document.createElement("p")
   p1.innerHTML = `Total Credit Hours for this Semester: <strong>${chSum}</strong>`;
@@ -235,6 +206,7 @@ function showGpaCard(gpa, Totalsum, chSum) {
 function showShareCard() {
 
   let p1 = document.createElement("p")
+  p1.className="p-font";
   p1.innerHTML = "*Copy The Link and Share With Custom Subject Name and Credit Hours";
   card_body.appendChild(p1);
 
@@ -297,7 +269,13 @@ function URLgenerator(){
 
 return newURL;
 }
+function showQualityCard(){
+  let p1 = document.createElement("p");
+  p1.innerHTML = "*Under Consideration";
+  p1.className="p-font";
+  card_body.appendChild(p1);
 
-
+  MyCard.style.display = 'block'; 
+}
 
 URLValues();

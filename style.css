@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 .overlay {
-  background-color: rgba(0, 0, 0, 0.427); /* Semi-transparent black overlay */
+  background-color: rgba(0, 0, 0, 0.427);
   position: fixed;
   top: 0;
   left: 0;
@@ -12,6 +12,13 @@
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(20px);
+}
+
+.btn{
+background-color: #0881c7 !important;
+}
+.btn:hover{
+  background-color: rgb(17, 114, 170) !important;
 }
 
 .input_text {
@@ -31,64 +38,91 @@ input_text:focus {
   border-radius: 4px;
 }
 
-.b1 {
-  text-align: center;
+.logo-img {
+  width: 220px;
+  height: auto;
+  margin-left: 5px;
+}
+
+@media (max-width: 768px) {
+  .logo-img {
+    width: 300px;
+    /* Smaller size for mobile devices */
+  }
+
+  .d-flex {
+    flex-direction: column;
+  }
 }
 
 #p1 {
   text-align: center;
   color: #617bff;
 }
-
-.mr-pos-10{
-margin-right: 10px;
-margin-left: 5px;
+.p-font{
+font-family: none;
 }
+
+.b1 {
+  text-align: center;
+}
+
 .shareIcon {
-  width: 40px; /* Adjusted size for better responsiveness */
+  width: 40px;
+  /* Adjusted size for better responsiveness */
   height: 40px;
-  cursor: pointer; /* Changes the cursor to a pointer on hover */
-  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
-  margin-right: 10px;
+  cursor: pointer;
+  /* Changes the cursor to a pointer on hover */
+  transition: transform 0.3s, box-shadow 0.3s;
+  /* Smooth transition for hover effects */
+  margin-right: 20px;
 }
 
 .shareIcon:hover {
-  transform: scale(1.1); /* Slightly enlarges the icon on hover */
+  transform: scale(1.1);
+  /* Slightly enlarges the icon on hover */
 }
 
 .PicIcon {
-  width: 40px; /* Adjusted size for better responsiveness */
+  width: 40px;
+  /* Adjusted size for better responsiveness */
   height: 40px;
-  cursor: pointer; /* Changes the cursor to a pointer on hover */
-  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+  cursor: pointer;
+  /* Changes the cursor to a pointer on hover */
+  transition: transform 0.3s, box-shadow 0.3s;
+  /* Smooth transition for hover effects */
   margin-right: 10px;
 }
 
 .PicIcon:hover {
-  transform: scale(1.1); /* Slightly enlarges the icon on hover */
+  transform: scale(1.1);
+  /* Slightly enlarges the icon on hover */
 }
-
 
 @media only screen and (max-device-width: 480px) {
   .input_text {
     font-weight: normal;
     font-size: 14px;
     width: 120%;
-    
+
   }
-  .form-group > .selectGrade{
+
+  .form-group>.selectGrade {
     width: 50%;
   }
-  .form-group > .form-select{
+
+  .form-group>.form-select {
     font-size: 0.9rem;
   }
-  .fs-4{
+
+  .fs-4 {
     padding-left: 0px;
   }
+
   .shareIcon {
-    width: 30px; /* Smaller size for mobile screens */
-    height: 30px;
-    margin: 5px;
+    width: 36px;
+    height: 36px;
+    margin: 6px;
   }
 }
 
@@ -111,34 +145,38 @@ margin-left: 5px;
   background: hsla(0, 0%, 100%, 0.6);
   padding: 28px 24px;
   font-size: 11px;
-  text-align: center; /* Optional: centers the text */
+  text-align: center;
+  /* Optional: centers the text */
   z-index: 10000;
 }
 
 .footer__copy {
-  margin: 0; /* Ensure no extra margin around the copy text */
+  margin: 0;
+  /* Ensure no extra margin around the copy text */
 }
+
 .form-group {
   display: flex;
   align-items: center;
   /* width: 50%; */
 }
-.form-group > * {
+
+.form-group>* {
   margin-right: 4px;
 }
 
-.fs-4{
+.fs-4 {
   padding-left: 20px;
-font-family: Poppins;
+  font-family: Poppins;
 }
-
 
 @media only screen and (min-width: 768px) {
-  .input-group{
-  justify-content: center;
-}
-#copy_input{
-width: 50%;
-flex: none;
-}
+  .input-group {
+    justify-content: center;
+  }
+
+  #copy_input {
+    width: 50%;
+    flex: none;
+  }
 }
