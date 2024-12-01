@@ -261,12 +261,13 @@ function URLgenerator(){
   else
   newURL+= `?n=${n.childElementCount-2}&subjects=`;
   
-  for (let i = 1; i <= n-2; i++) {
+  n=n.childElementCount-2;
+  for (let i = 1; i <= n; i++) {
     newURL+= document.getElementById(`inputId${i}`).value;
     newURL+=",";
   }
   newURL+="&credits=";
-  for (let i = 1; i <= n-2; i++) {
+  for (let i = 1; i <= n; i++) {
     newURL+= document.getElementById(`subjectCH${i}`).value;
     newURL+=",";
   }
