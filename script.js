@@ -175,8 +175,8 @@ function URLValues() {
   const urlParams = new URLSearchParams(window.location.search);
 
   if (urlParams.get('n')) {
-
     const n = urlParams.get('n');
+    if(n<=0) return;
     let subject_names = urlParams.get('subjects') ? urlParams.get('subjects').split(',') : [];
     let credits_hours = urlParams.get('credits') ? urlParams.get('credits').split(',') : [];
     credits_hours = credits_hours.map(element => parseInt(element));
@@ -254,9 +254,13 @@ function CloseCard() {
 
 function URLgenerator(){
   let newURL= window.location.origin +  window.location.pathname;
-  let n = document.getElementById('select_subject').value;
-  newURL+= `?n=${n}&subjects=`;
+  let n = document.querySelector('form');
 
+  if(n.childElementCount==0)
+  newURL+= `?n=${n.childElementCount}&subjects=`;
+  else
+  newURL+= `?n=${n.childElementCount-2}&subjects=`;
+  
   for (let i = 1; i <= n; i++) {
     newURL+= document.getElementById(`inputId${i}`).value;
     newURL+=",";
