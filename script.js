@@ -257,16 +257,16 @@ function URLgenerator(){
   let n = document.querySelector('form');
 
   if(n.childElementCount==0)
-  newURL+= `?n=${n.childElementCount}&subjects=`;
+  return newURL;
   else
   newURL+= `?n=${n.childElementCount-2}&subjects=`;
   
-  for (let i = 1; i <= n; i++) {
+  for (let i = 1; i <= n-2; i++) {
     newURL+= document.getElementById(`inputId${i}`).value;
     newURL+=",";
   }
   newURL+="&credits=";
-  for (let i = 1; i <= n; i++) {
+  for (let i = 1; i <= n-2; i++) {
     newURL+= document.getElementById(`subjectCH${i}`).value;
     newURL+=",";
   }
